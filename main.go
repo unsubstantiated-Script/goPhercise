@@ -1,7 +1,10 @@
 package main
 
-import quiz_game "goPhercise/quiz-game"
+import (
+	url_shortener "goPhercise/url-shortener"
+)
 
 func main() {
-	quiz_game.RollQuizGame()
+	//quiz_game.RollQuizGame()
+	url_shortener.RollURLShortener()
 }

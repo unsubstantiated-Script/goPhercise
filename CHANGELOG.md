@@ -2,6 +2,10 @@
 Next Release
 -
 
+Version 1.2.0
+-
+* URL Shortener
+
 Version 1.1.0
 -
 * Quiz Game
