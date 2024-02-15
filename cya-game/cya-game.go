@@ -26,7 +26,7 @@ func RollCYAGame() {
 		panic(err)
 	}
 
-	h := NewHandler(story)
+	h := NewHandler(story, WithTemplate(nil))
 	fmt.Printf("Starting the server on port: %d\n", *port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), h))
 }
