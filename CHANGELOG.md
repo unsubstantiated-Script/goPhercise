@@ -1,6 +1,9 @@
 
 Next Release
 -
+
+Version 1.3.0
+-
 * Choose Your Own Adventure Game
 
 Version 1.2.0
