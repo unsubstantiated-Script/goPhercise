@@ -2,6 +2,10 @@
 Next Release
 -
 
+Version 1.4.0
+-
+* HTML Link parser
+
 Version 1.3.0
 -
 * Choose Your Own Adventure Game
