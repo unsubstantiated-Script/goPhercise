@@ -9,7 +9,8 @@ import (
 var exampleHtml = `<html>
 <body>
   <h1>Hello!</h1>
-  <a href="/other-page">A link to another page</a>
+  <a href="/other-page">A link to another page <span> Some Moar stuffs </span></a>
+  <a href="/first-page">A link to the first page</a>
 </body>
 </html>
 `

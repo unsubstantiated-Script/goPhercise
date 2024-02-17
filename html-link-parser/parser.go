@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"golang.org/x/net/html"
 	"io"
+	"strings"
 )
 
 // Link represents a link (<a href="..."></a>) in an HTML document.
@@ -19,19 +20,70 @@ func Parse(r io.Reader) ([]Link, error) {
 	if err != nil {
 		return nil, err
 	}
+	//1. Find <a> nodes in doc.
+	//2. Foreach link node...
+	//   a. build a link
+	//3. Return the links
+	nodes := linkNodes(doc)
+	var links []Link
 
-	dfs(doc, "")
-	return nil, nil
+	for _, node := range nodes {
+		links = append(links, buildLink(node))
+		fmt.Println(node)
+	}
+	//dfs(doc, "")
+	return links, nil
 }
 
-func dfs(n *html.Node, padding string) {
-	msg := n.Data
-	if n.Type == html.ElementNode {
-		msg = "<" + msg + ">"
+func buildLink(n *html.Node) Link {
+	var ret Link
+	for _, attr := range n.Attr {
+		//Looking for the href attribute
+		if attr.Key == "href" {
+			ret.Href = attr.Val
+			break
+		}
 	}
-	fmt.Println(padding, msg)
-	//Iterating through each of the nodes and viewing them. A bit of recursion too. As the loop runs c will be reassigned to the next sibling.
+	ret.Text = text(n)
+	return ret
+}
+
+func text(n *html.Node) string {
+	if n.Type == html.TextNode {
+		return n.Data
+	}
+
+	if n.Type != html.ElementNode {
+		return ""
+	}
+
+	var ret string
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
-		dfs(c, padding+"  ")
+		ret += text(c) + " "
 	}
+
+	return strings.Join(strings.Fields(ret), " ")
 }
+
+func linkNodes(n *html.Node) []*html.Node {
+	if n.Type == html.ElementNode && n.Data == "a" {
+		return []*html.Node{n}
+	}
+	var ret []*html.Node
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		ret = append(ret, linkNodes(c)...)
+	}
+	return ret
+}
+
+//func dfs(n *html.Node, padding string) {
+//	msg := n.Data
+//	if n.Type == html.ElementNode {
+//		msg = "<" + msg + ">"
+//	}
+//	fmt.Println(padding, msg)
+//	//Iterating through each of the nodes and viewing them. A bit of recursion too. As the loop runs c will be reassigned to the next sibling.
+//	for c := n.FirstChild; c != nil; c = c.NextSibling {
+//		dfs(c, padding+"  ")
+//	}
+//}
