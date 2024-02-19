@@ -1,6 +1,7 @@
 
 Next Release
 -
+* Site Map Builder
 
 Version 1.4.0
 -
