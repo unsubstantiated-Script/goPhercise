@@ -3,9 +3,9 @@ package sitemap_builder
 import (
 	"flag"
 	"fmt"
-	"io"
+	link "goPhercise/html-link-parser"
 	"net/http"
-	"os"
+	"net/url"
 )
 
 /*
@@ -18,7 +18,7 @@ import (
 */
 
 func RollSitemapBuilder() {
-	urlFlag := flag.String("url", "https://gophercises.com", "The url you wanna build a sitemap for.")
+	urlFlag := flag.String("url", "https://gophercises.com/demos/cyoa", "The url you wanna build a sitemap for.")
 	flag.Parse()
 
 	fmt.Println(*urlFlag)
@@ -31,5 +31,31 @@ func RollSitemapBuilder() {
 	defer resp.Body.Close()
 
 	//Copies from a reader os.Stdout to a writer resp.Body
-	io.Copy(os.Stdout, resp.Body)
+	//io.Copy(os.Stdout, resp.Body)
+
+	links, _ := link.Parse(resp.Body)
+	for _, l := range links {
+		fmt.Println(l)
+	}
+
+	/*
+		/some-path
+		https://gophercises.com/some-path
+		#fragment
+			i.e.
+			/some-path#fragment
+			https://gophercises.com/some-path#fragment
+		mailto:jon@calhoun.io
+	*/
+
+	reqUrl := resp.Request.URL
+
+	baseUrl := &url.URL{
+		Scheme: reqUrl.Scheme,
+		Host:   reqUrl.Host,
+	}
+
+	base := baseUrl.String()
+	fmt.Println("Request URL:", reqUrl.String())
+	fmt.Println("Base URL:", base)
 }
