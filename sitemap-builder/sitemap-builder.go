@@ -4,8 +4,10 @@ import (
 	"flag"
 	"fmt"
 	link "goPhercise/html-link-parser"
+	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 /*
@@ -18,25 +20,24 @@ import (
 */
 
 func RollSitemapBuilder() {
-	urlFlag := flag.String("url", "https://gophercises.com/demos/cyoa", "The url you wanna build a sitemap for.")
+	//Getting the URL
+	urlFlag := flag.String("url", "https://gophercises.com", "The url you wanna build a sitemap for.")
 	flag.Parse()
 
 	fmt.Println(*urlFlag)
 
+	//Get Request
 	resp, err := http.Get(*urlFlag)
 	if err != nil {
 		panic(err)
 	}
 	//These defers should be kept close to their OG instantiations. They will run at the end regardless. A "return" won't shut them down.
+
+	//Even though this gets pushed to the end, it's still best to keep it here.
 	defer resp.Body.Close()
 
 	//Copies from a reader os.Stdout to a writer resp.Body
 	//io.Copy(os.Stdout, resp.Body)
-
-	links, _ := link.Parse(resp.Body)
-	for _, l := range links {
-		fmt.Println(l)
-	}
 
 	/*
 		/some-path
@@ -48,14 +49,38 @@ func RollSitemapBuilder() {
 		mailto:jon@calhoun.io
 	*/
 
+	// The url from the response
 	reqUrl := resp.Request.URL
 
+	// Setting up the base url via the url struct from GoLang
 	baseUrl := &url.URL{
 		Scheme: reqUrl.Scheme,
 		Host:   reqUrl.Host,
 	}
 
+	//converting to string with some Go magic
 	base := baseUrl.String()
-	fmt.Println("Request URL:", reqUrl.String())
-	fmt.Println("Base URL:", base)
+
+	pages := hrefs(resp.Body, base)
+
+	for _, page := range pages {
+		fmt.Println(page)
+	}
+
+}
+
+func hrefs(r io.Reader, base string) []string {
+	links, _ := link.Parse(r)
+
+	var ret []string
+	for _, l := range links {
+		switch {
+		case strings.HasPrefix(l.Href, "/"):
+			ret = append(ret, base+l.Href)
+		case strings.HasPrefix(l.Href, "http"):
+			ret = append(ret, l.Href)
+		}
+	}
+
+	return ret
 }
