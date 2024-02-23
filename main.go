@@ -1,6 +1,6 @@
 package main
 
-import bduplines "goPhercise/goBook/1-B-DupLines"
+import clissajous "goPhercise/goBook/1-C-Lissajous"
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -8,6 +8,7 @@ func main() {
 	//cya_game.RollCYAGame()
 	//HTML Link parser is run in its own directories
 	//aecho.RollEcho()
-	bduplines.RollDupLines()
+	//bduplines.RollDupLines()
+	clissajous.RollLissajous()
 	//sitemap_builder.RollSitemapBuilder()
 }
