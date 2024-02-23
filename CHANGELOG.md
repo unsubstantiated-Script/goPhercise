@@ -3,6 +3,8 @@ Next Release
 -
 * Site Map Builder
 * GoBook 1-A-Separator
+* GoBook 1-B-DupLines
+* GoBook 1-C-Lissajous
 
 Version 1.4.0
 -
