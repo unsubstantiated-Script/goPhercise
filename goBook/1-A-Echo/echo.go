@@ -12,5 +12,11 @@ func RollEcho() {
 		s += sep + os.Args[i]
 		sep = " "
 	}
+
+	for k, v := range os.Args {
+		fmt.Printf("\"%d\" is the key. \"%v\" is the value\n", k, v)
+	}
+	//Printing the command that involved this method.
+	fmt.Println(os.Args[0])
 	fmt.Println(s)
 }
