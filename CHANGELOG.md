@@ -2,6 +2,7 @@
 Next Release
 -
 * Site Map Builder
+* GoBook 1-A-Separator
 
 Version 1.4.0
 -
