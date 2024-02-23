@@ -5,6 +5,7 @@ Next Release
 * GoBook 1-A-Separator
 * GoBook 1-B-DupLines
 * GoBook 1-C-Lissajous
+* GoBook 1-D-FetchURL
 
 Version 1.4.0
 -
