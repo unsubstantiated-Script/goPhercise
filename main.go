@@ -1,8 +1,6 @@
 package main
 
-import (
-	dfetchurl "goPhercise/goBook/1-D-FetchURL"
-)
+import dfetchurl "goPhercise/goBook/1-D-FetchURL"
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -12,6 +10,7 @@ func main() {
 	//aecho.RollEcho()
 	//bduplines.RollDupLines()
 	//clissajous.RollLissajous()
-	dfetchurl.RollFetchURL()
+	//dfetchurl.RollFetchURL()
+	dfetchurl.RollFetchURLConcurrent()
 	//sitemap_builder.RollSitemapBuilder()
 }
