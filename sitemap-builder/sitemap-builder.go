@@ -26,47 +26,31 @@ func RollSitemapBuilder() {
 
 	fmt.Println(*urlFlag)
 
-	//Get Request
-	resp, err := http.Get(*urlFlag)
-	if err != nil {
-		panic(err)
-	}
-	//These defers should be kept close to their OG instantiations. They will run at the end regardless. A "return" won't shut them down.
-
-	//Even though this gets pushed to the end, it's still best to keep it here.
-	defer resp.Body.Close()
-
-	//Copies from a reader os.Stdout to a writer resp.Body
-	//io.Copy(os.Stdout, resp.Body)
-
-	/*
-		/some-path
-		https://gophercises.com/some-path
-		#fragment
-			i.e.
-			/some-path#fragment
-			https://gophercises.com/some-path#fragment
-		mailto:jon@calhoun.io
-	*/
-
-	// The url from the response
-	reqUrl := resp.Request.URL
-
-	// Setting up the base url via the url struct from GoLang
-	baseUrl := &url.URL{
-		Scheme: reqUrl.Scheme,
-		Host:   reqUrl.Host,
-	}
-
-	//converting to string with some Go magic
-	base := baseUrl.String()
-
-	pages := hrefs(resp.Body, base)
+	pages := get(*urlFlag)
+	//pages := hrefs(resp.Body, base)
 
 	for _, page := range pages {
 		fmt.Println(page)
 	}
 
+}
+
+func get(urlStr string) []string {
+	resp, err := http.Get(urlStr)
+	if err != nil {
+		panic(err)
+	}
+
+	defer resp.Body.Close()
+
+	reqUrl := resp.Request.URL
+	baseUrl := &url.URL{
+		Scheme: reqUrl.Scheme,
+		Host:   reqUrl.Host,
+	}
+	base := baseUrl.String()
+
+	return hrefs(resp.Body, base)
 }
 
 func hrefs(r io.Reader, base string) []string {

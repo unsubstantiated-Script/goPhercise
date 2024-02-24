@@ -1,8 +1,6 @@
 package main
 
-import (
-	ewebserver "goPhercise/goBook/1-E-WebServer"
-)
+import sitemap_builder "goPhercise/sitemap-builder"
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -13,6 +11,6 @@ func main() {
 	//bduplines.RollDupLines()
 	//clissajous.RollLissajous()
 	//dfetchurl.RollFetchURLConcurrent()
-	ewebserver.RollWebServer()
-	//sitemap_builder.RollSitemapBuilder()
+	//ewebserver.RollWebServer()
+	sitemap_builder.RollSitemapBuilder()
 }
