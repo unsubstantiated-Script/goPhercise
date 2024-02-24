@@ -1,6 +1,6 @@
 package main
 
-import clissajous "goPhercise/goBook/1-C-Lissajous"
+import dfetchurl "goPhercise/goBook/1-D-FetchURL"
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -9,6 +9,8 @@ func main() {
 	//HTML Link parser is run in its own directories
 	//aecho.RollEcho()
 	//bduplines.RollDupLines()
-	clissajous.RollLissajous()
+	//clissajous.RollLissajous()
+	//dfetchurl.RollFetchURL()
+	dfetchurl.RollFetchURLConcurrent()
 	//sitemap_builder.RollSitemapBuilder()
 }
