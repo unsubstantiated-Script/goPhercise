@@ -1,6 +1,8 @@
 package main
 
-import dfetchurl "goPhercise/goBook/1-D-FetchURL"
+import (
+	ewebserver "goPhercise/goBook/1-E-WebServer"
+)
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -10,7 +12,7 @@ func main() {
 	//aecho.RollEcho()
 	//bduplines.RollDupLines()
 	//clissajous.RollLissajous()
-	//dfetchurl.RollFetchURL()
-	dfetchurl.RollFetchURLConcurrent()
+	//dfetchurl.RollFetchURLConcurrent()
+	ewebserver.RollWebServer()
 	//sitemap_builder.RollSitemapBuilder()
 }

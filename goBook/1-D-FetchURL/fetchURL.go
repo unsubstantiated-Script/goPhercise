@@ -1,4 +1,4 @@
-package __D_FetchURL
+package main
 
 import (
 	"fmt"
