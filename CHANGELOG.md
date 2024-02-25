@@ -1,6 +1,9 @@
 
 Next Release
 -
+
+Version 1.5.0
+-
 * Site Map Builder
 * GoBook 1-A-Separator
 * GoBook 1-B-DupLines
