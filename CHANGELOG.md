@@ -2,6 +2,15 @@
 Next Release
 -
 
+Version 1.5.0
+-
+* Site Map Builder
+* GoBook 1-A-Separator
+* GoBook 1-B-DupLines
+* GoBook 1-C-Lissajous
+* GoBook 1-D-FetchURL
+* GoBook 1-E-WebServer
+
 Version 1.4.0
 -
 * HTML Link parser
