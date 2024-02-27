@@ -1,6 +1,8 @@
 package main
 
-import sitemap_builder "goPhercise/sitemap-builder"
+import (
+	hacker_rank "goPhercise/hacker-rank/camel-case"
+)
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -12,5 +14,6 @@ func main() {
 	//clissajous.RollLissajous()
 	//dfetchurl.RollFetchURLConcurrent()
 	//ewebserver.RollWebServer()
-	sitemap_builder.RollSitemapBuilder()
+	//sitemap_builder.RollSitemapBuilder()
+	hacker_rank.RollCamelCase()
 }
