@@ -1,8 +1,6 @@
 package main
 
-import (
-	hacker_rank "goPhercise/hacker-rank/camel-case"
-)
+import skeezer_cipher "goPhercise/hacker-rank/skeezer-cipher"
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -15,5 +13,6 @@ func main() {
 	//dfetchurl.RollFetchURLConcurrent()
 	//ewebserver.RollWebServer()
 	//sitemap_builder.RollSitemapBuilder()
-	hacker_rank.RollCamelCase()
+	//hacker_rank.RollCamelCase()
+	skeezer_cipher.RollSkeezerCipher()
 }
