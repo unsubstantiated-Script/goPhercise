@@ -10,8 +10,9 @@ import (
 func RollCamelCase() {
 	var input string
 	fmt.Scanf("%s\n", &input)
-	//fmt.Println("Input is:", input)
-	answer := 0
+
+	//Set to one because the first word is guaranteed.
+	answer := 1
 
 	for _, ch := range input {
 		if unicode.IsUpper(ch) {
