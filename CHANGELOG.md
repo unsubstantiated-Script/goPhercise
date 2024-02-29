@@ -1,6 +1,7 @@
 
 Next Release
 -
+* Hacker Rank Jazz
 
 Version 1.5.0
 -
