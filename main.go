@@ -1,6 +1,6 @@
 package main
 
-import sitemap_builder "goPhercise/sitemap-builder"
+import skeezer_cipher "goPhercise/hacker-rank/skeezer-cipher"
 
 func main() {
 	//quiz_game.RollQuizGame()
@@ -12,5 +12,7 @@ func main() {
 	//clissajous.RollLissajous()
 	//dfetchurl.RollFetchURLConcurrent()
 	//ewebserver.RollWebServer()
-	sitemap_builder.RollSitemapBuilder()
+	//sitemap_builder.RollSitemapBuilder()
+	//hacker_rank.RollCamelCase()
+	skeezer_cipher.RollSkeezerCipher()
 }

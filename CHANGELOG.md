@@ -2,6 +2,10 @@
 Next Release
 -
 
+Version 1.6.0
+-
+* Hacker Rank Jazz
+
 Version 1.5.0
 -
 * Site Map Builder
