@@ -1,6 +1,7 @@
 
 Next Release
 -
+* Task Manager
 
 Version 1.6.0
 -
