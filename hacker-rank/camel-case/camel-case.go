@@ -5,7 +5,7 @@ import (
 	"unicode"
 )
 
-//Run with go run main.go < ./hacker-rank/camel-case/camel.in > ./hacker-rank/camel-case/camel.out
+//Run with go run tasks.go < ./hacker-rank/camel-case/camel.in > ./hacker-rank/camel-case/camel.out
 
 func RollCamelCase() {
 	var input string
