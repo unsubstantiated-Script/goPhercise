@@ -1,11 +1,12 @@
 /*
 Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
 import (
 	"fmt"
+	"goPhercise/task/db"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -13,28 +14,29 @@ import (
 // listCmd represents the list command
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Lists all of your tasks.",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
+		tasks, err := db.AllTasks()
+		if err != nil {
+			fmt.Println("Something went wrong:", err.Error())
+			os.Exit(1)
+		}
+
+		if len(tasks) == 0 {
+			fmt.Println("You have no tasks to complete! Great job you stud you! Now go study.")
+			return
+		}
+
+		fmt.Println("You have the following tasks:")
+
+		//index based so we want this to start at 1 not zero
+		for i, task := range tasks {
+			fmt.Printf("%d. %s, Key=%d\n", i+1, task.Value, task.Key)
+		}
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(listCmd)
+	RootCmd.AddCommand(listCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// listCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// listCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
