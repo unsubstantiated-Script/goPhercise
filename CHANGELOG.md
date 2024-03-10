@@ -1,6 +1,7 @@
 
 Next Release
 -
+* Phone Normalizer
 
 Version 1.7.0
 -
