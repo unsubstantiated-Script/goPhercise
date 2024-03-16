@@ -1,6 +1,9 @@
 
 Next Release
 -
+
+Version 1.8.0
+-
 * Phone Normalizer
 
 Version 1.7.0
