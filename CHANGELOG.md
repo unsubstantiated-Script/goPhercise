@@ -2,6 +2,8 @@
 Next Release
 -
 
+* Playing Cards
+
 Version 1.8.0
 -
 * Phone Normalizer
