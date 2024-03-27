@@ -93,12 +93,14 @@ func absRank(c Card) int {
 	return int(c.Suit)*int(maxRank) + int(c.Rank)
 }
 
+var shuffleRand = rand.New(rand.NewSource(time.Now().Unix()))
+
 func Shuffle(cards []Card) []Card {
 	ret := make([]Card, len(cards))
-	//Random number
-	r := rand.New(rand.NewSource(time.Now().Unix()))
+	////Random number
+	//r := rand.New(rand.NewSource(time.Now().Unix()))
 	//Permutating
-	perm := r.Perm(len(cards))
+	perm := shuffleRand.Perm(len(cards))
 	//Looping over to assign
 	for i, j := range perm {
 		ret[i] = cards[j]
@@ -126,6 +128,16 @@ func Filter(f func(card Card) bool) func([]Card) []Card {
 			if !f(c) {
 				ret = append(ret, c)
 			}
+		}
+		return ret
+	}
+}
+
+func Deck(n int) func([]Card) []Card {
+	return func(cards []Card) []Card {
+		var ret []Card
+		for i := 0; i < n; i++ {
+			ret = append(ret, cards...)
 		}
 		return ret
 	}
