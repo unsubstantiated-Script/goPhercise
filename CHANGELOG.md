@@ -2,6 +2,8 @@
 Next Release
 -
 
+* Black Jack Game
+
 Version 1.9.0
 -
 * Playing Cards
