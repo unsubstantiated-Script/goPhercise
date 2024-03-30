@@ -1,5 +1,7 @@
 package main
 
+import "goPhercise/blackjack"
+
 func main() {
 	//quiz_game.RollQuizGame()
 	//url_shortener.RollURLShortener()
@@ -13,4 +15,5 @@ func main() {
 	//sitemap_builder.RollSitemapBuilder()
 	//hacker_rank.RollCamelCase()
 	//skeezer_cipher.RollSkeezerCipher()
+	blackjack.BlackJack()
 }
